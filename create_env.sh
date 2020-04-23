@@ -1,0 +1,1 @@
+gcloud config set project $YOUR_PROJECT;gcloud config set compute/zone us-central1-a ; gcloud container clusters create devk8senv --preemptible --machine-type=n1-standard-1 --num-nodes=2 --disk-size=20; gcloud container node-pools create free-node --cluster devk8senv --machine-type=f1-micro --num-nodes=1 --disk-size=15

@@ -1,0 +1,1 @@
+gcloud config set project $YOUR_PROJECT;gcloud config set compute/zone us-central1-a ; gcloud -q container clusters delete devk8senv; gcloud sql instances patch dev-cloud-sql --activation-policy NEVER

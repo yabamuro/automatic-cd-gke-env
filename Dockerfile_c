@@ -1,0 +1,20 @@
+# Build Container
+FROM golang:latest as builder
+WORKDIR /go/
+RUN mkdir setenv
+WORKDIR /go/setenv
+# Set Environment Variable
+ENV GOPATH $HOME/go
+ENV CGO_ENABLED=0
+RUN go get golang.org/x/crypto/ripemd160
+RUN go get github.com/btcsuite/btcutil/base58
+COPY . .
+# Build
+WORKDIR /go/setenv
+RUN go build createEnv.go
+
+FROM gcr.io/cloud-builders/gcloud:latest
+COPY create_env.sh /tmp/
+RUN chmod 755 /tmp/create_env.sh
+COPY --from=builder /go/setenv/createEnv /createEnv
+ENTRYPOINT ["/createEnv"]
