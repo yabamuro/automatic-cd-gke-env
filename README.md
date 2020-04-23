@@ -25,7 +25,13 @@ It's just one example and you can choose any period by changing the cron configu
 <img width="782" alt="Architecture" src="https://user-images.githubusercontent.com/32224266/80072663-83fea300-8581-11ea-9808-c3981e444e6c.png">
 
 <a id="anchor3"></a>
-### 3. Procedure
+### 3. Procedure(You can execute following procedures via cloud-shell)
+#### 3.0. Adjust configurations for your GCP projects
+- Write your GCP project name to $YOUR_PROJECT in following files.
+```
+create_env.sh
+delete_env.sh
+```
 #### 3.1. Cloud Pub/Sub → Cloud Run
 - Build the Docker images
 ```
